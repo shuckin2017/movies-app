@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MoviesList from "./components/MoviesList";
 import Layuot from "./components/Ui/Layout";
 import "./style.scss";
 
@@ -14,13 +15,13 @@ export default function App() {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((repos) => {
-        setAppState({ loading: false, repos: repos });
+        setAppState({ loading: false, repos: repos.data.movies });
       });
   }, [setAppState]);
 
   return (
     <Layuot>
-      <div>dfdfd</div>
+      <MoviesList repos={appState.repos} isLoading={appState.loading} />
     </Layuot>
   );
 }

@@ -1,0 +1,37 @@
+.movies-item--desc {
+    display: none;
+    transform: translateX(-100vw);
+    transition: 0.5s cubic-bezier(0.4, 0, 1, 1);
+
+}
+.movies-item--footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.movies-item:hover .movies-item--desc {
+    display: block;
+    transform: translateX(0);
+}
+
+.movies-item:hover img {
+    filter: blur(2px);
+}
+
+
+.movies-item:hover button {
+    animation: arrow-down 2s linear infinite;
+}
+@keyframes arrow-down {
+    0% {
+        bottom: 20px;
+    }
+    50% {
+        bottom:16px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
