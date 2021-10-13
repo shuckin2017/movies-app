@@ -20,7 +20,7 @@ export const MoviesItem = ({ repo }) => {
   } = repo;
   return (
     <div
-      className="movies-item rounded-xl overflow-hidden relative transform hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out "
+      className="movies-item rounded-xl overflow-hidden relative transform hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
       onClick={() => setStateFilm(stateFilm)}
     >
       <img

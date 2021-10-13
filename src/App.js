@@ -6,18 +6,46 @@ import "./style.scss";
 export default function App() {
   const [appState, setAppState] = useState({
     loading: false,
-    repos: null,
+    repos: [],
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [fetching, setFetching] = useState(true);
+  console.log(fetching);
 
   useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://yts.mx/api/v2/list_movies.json`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((repos) => {
-        setAppState({ loading: false, repos: repos.data.movies });
-      });
-  }, [setAppState]);
+    document.addEventListener("scroll", scrollHandler);
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (fetching) {
+      setAppState({ loading: true });
+      const apiUrl = `https://yts.mx/api/v2/list_movies.json?page=${currentPage}`;
+      fetch(apiUrl)
+        .then((res) => res.json())
+        .then((repos) => {
+          setAppState({
+            loading: false,
+            repos: [...appState.repos, ...repos.data.movies],
+          });
+          setFetching(false);
+          console.log(appState.repos);
+          setCurrentPage((prevSatate) => prevSatate + 1);
+        });
+    }
+  }, [fetching]);
+
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      100
+    ) {
+      setFetching(true);
+    }
+  };
 
   return (
     <Layuot>

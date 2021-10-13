@@ -8,7 +8,7 @@ export const MoviesList = ({ repos }) => {
   return (
     <section className="flex flex-col">
       <div className="text-white text-4xl pb-10 font-semibold ">Фильмы</div>
-      <div className="grid grid-rows-5 xl:grid-rows-4 grid-flow-col gap-5 ">
+      <div className="grid xl:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-5 ">
         {repos.map((repo) => {
           return <MoviesItem repo={repo} />;
         })}

@@ -1,3 +1,6 @@
+.movies-item:hover {
+    z-index: 100;
+}
 .movies-item--desc {
     display: none;
     transform: translateX(-100vw);
