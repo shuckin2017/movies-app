@@ -7,7 +7,7 @@ export const Layout = (props) => {
   return (
     <>
       <Header />
-      <div className="container mx-auto">
+      <div className="container mx-auto overflow-hidden">
         <div className="flex flex-col w-full flex-1 pt-10 pb-16">
           {children}
         </div>
