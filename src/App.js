@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MoviesList from "./components/MoviesList";
-import Pagination from "./components/Pagination";
 import Layuot from "./components/Ui/Layout";
 import "./style.scss";
 
@@ -9,7 +8,7 @@ export default function App() {
     loading: false,
     result: [],
   });
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
@@ -49,7 +48,6 @@ export default function App() {
   return (
     <Layuot>
       <MoviesList result={appState.result} isLoading={appState.loading} />
-      <Pagination />
     </Layuot>
   );
 }
